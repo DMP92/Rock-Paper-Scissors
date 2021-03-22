@@ -1,0 +1,125 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: #b6fdfa;
+}
+
+h1 {
+    font-family: Youknowthemoviesong;
+    font-size: 55px;
+    color:#347D79;
+    text-shadow: 2px 2px 2px rgba(52, 125, 121, 0.3);
+    white-space: nowrap;
+    
+
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 120px;
+    background-color: rgba(255, 255, 255, 0.541);
+    border-bottom: 0px solid rgb(52, 125, 121);
+    box-shadow: 1px 1px 5px 3px rgba(52, 125, 121, .3);
+
+}
+
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+/* rock */
+.rock {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 0px;
+    background: linear-gradient(90deg, rgba(36, 122, 118, 0.3), rgb(182, 253, 250));
+    box-shadow: 2px 2px 2px rgba(52, 125, 121, .3);
+
+    border: 0 solid transparent;
+}
+#rock {
+    width: 100px;
+    height: 100px;
+}
+
+/* Paper */
+
+.paper {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(90deg, rgba(36, 122, 118, 0.3), rgb(182, 253, 250));
+    box-shadow: 2px 2px 2px rgba(52, 125, 121, .3);
+    border: 0 solid transparent;
+}
+
+#paper {
+    width: 100px;
+    height: 100px;
+}
+
+/* Scissors */
+.scissors {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(90deg, rgba(36, 122, 118, 0.3), rgb(182, 253, 250));
+    box-shadow: 2px 2px 2px rgba(52, 125, 121, .3);
+    border: 0 solid transparent;
+}
+
+#scissors {
+    width: 100px;
+    height: 100px;
+}
+
+/* Pseudo classes for buttons */
+.rock:hover {
+    background-color: rgba(36, 122, 118, .3);
+}
+
+.paper:hover {
+    background-color: rgba(36, 122, 118, 0.3);
+}
+
+.scissors:hover {
+    background-color: rgba(36, 122, 118, .3);
+}
+
+
+.rock:focus {
+    
+    outline: 0;
+    background-color: rgba(36, 122, 118, 1);
+    border-color:rgba(36, 122, 118, 1);    
+   
+}
+
+.paper:focus {
+    outline: 0;
+    background-color: rgba(36, 122, 118, 1);
+    border-color:rgba(36, 122, 118, 1);    
+}
+
+.scissors:focus {
+    outline: 0;
+    background-color: rgba(36, 122, 118, 1);
+    border-color:rgba(36, 122, 118, 1);    
+
+}
