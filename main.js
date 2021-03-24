@@ -20,9 +20,10 @@
 
 
 // Rock, Paper, Scissor Button Identifiers
-const rock = document.getElementsByClassName("rock");
-const paper = document.getElementsByClassName("paper");
-const scissors = document.getElementsByClassName("scissors");
+let rock = document.getElementsByClassName("rock");
+let paper = document.getElementsByClassName("paper");
+let scissors = document.getElementsByClassName("scissors");
+
 
 // Array for computer randomized selection
 const gameArray = [
@@ -32,16 +33,33 @@ const gameArray = [
 ]
 
 // function that gets activated after user's selection
-function computerSelection() {
+function computerPlay() {
     var computer = gameArray[Math.floor(Math.random() * gameArray.length)];
     buttonClick();
     return console.log(computer);
 }
 
-// Just a test to see if I can get JS to show that the computer has made a choice
-function buttonClick() {
-    var sciButton = document.getElementsByClassName("scissors");
-    
+scissors.addEventListener("click", function () {
+    computerSelection();
+})
+
+// Function for Rock Paper Scissor Priority
+
+/*
+
+function priorityLevel() {
+    if (rock && scissors) {
+
+    }
 }
 
-computerSelection();
+
+
+
+// Just a test to see if I can get JS to show that the computer has made a choice
+//function buttonClick() {
+    //var sciButton = document.getElementsByClassName("scissors").style.background-color = rgba(52, 125, 121, .6);
+   
+}
+
+*/
