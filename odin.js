@@ -1,50 +1,75 @@
-// Rock, Paper, Scissor Button Identifiers
-let rock = document.getElementsByClassName("rock");
-let paper = document.getElementsByClassName("paper");
-let scissors = document.getElementsByClassName("scissors");
+let rock = "rock"; //= document.getElementsByClassName("rock");
+let paper = "paper"; //= document.getElementsByClassName("paper");
+let scissors= "scissors"; //= document.getElementsByClassName("scissors");
+let playerSelection;
+let playerScore = 0;
+let computerScore = 0;
 
-
-// Array for computer randomized selection
 const gameArray = [
     rock,
     paper,
     scissors
 ]
 
-// Randomized Computer Selection
-function computerPlay() {
-    var computer = gameArray[Math.floor(Math.random() * gameArray.length)];
-    return console.log(computer);
+function roundCounter() {
+    round += 1;
+    return round;
+}
+    
+   
+function computersChoice() {
+    var computer = gameArray[Math.floor(Math.random()
+            * gameArray.length)];
+    return computer;
 }
 
-computerPlay();
+let computerSelection = computersChoice();
 
-// Single Round of RPS
+
+
+/*
+function game() {
+    gameArray.addEventListener("click", gamePlay(playerSelection, computerSelection));
+    
+    }
+*/
 
 function gamePlay(playerSelection, computerSelection) {
-    if (playerSelection == rock && computerSelection == rock) {
-        return "Tie! Try again!";
-    } else if (playerSelection == rock && computerSelection == paper) {
-        return "You lost! Paper covers rock!";
-    } else if (playerSelection == rock && computerSelection == scissors) {
-        return "You win! Rock smashes scissors!";
-    } else if (playerSelection == paper && computerSelection == paper) {
-        return "Tie! Try again!";
-    } else if (playerSelection == paper && computerSelection == rock) {
-        return "You win! Paper covers rock!";
-    } else if (playerSelection == paper && computerSelection == scissors) {
-        return "You lost! Scissors cuts paper!";
-    } else if (playerSelection == scissors && computerSelection == scissors) {
-        return "Tie! Try again!";
-    } else if (playerSelection == scissors && computerSelection == paper) {
-        return "You win! Scissors cuts paper!";
-    } else if (playerSelection == scissors && computerSelection == rock) {
-        return "You lost! Rock smashes scissors!";
+    switch (true) {
+        case playerSelection === computerSelection:
+            console.log(`Its a tie! You both chose ${playerSelection}! Try again!`);
+            break;
+        case playerSelection === rock && computerSelection === scissors:
+        case playerSelection === paper && computerSelection === rock:
+        case playerSelection === scissors && computerSelection === paper:
+            console.log(`${playerSelection} beats ${computerSelection}!`);
+            playerScore += 1;
+            
+            break;
+        default:
+            console.log(`${computerSelection} beats ${playerSelection} You lose. Try again!`);
+            computerScore += 1;
+    }
+   
+}
+
+function scoreTracker() {
+    switch (true) {
+        case (playerScore > computerScore):
+            console.log(`You scored ${playerScore}, and the computer ${computerScore}! You win!`);
+            break;
+        default: 
+            console.log(`The computer scored ${computerScore}, you scored ${playerScore}! You lost..`)
     }
 }
 
-console.log(gamePlay(scissors, paper));
-
 function game() {
-    
+    for (round = 1; round < 6; round++) {
+        console.log(`Round ${round}`);
+        gamePlay(rock, computerSelection);
+        
+    }
+    console.log("----------------- Final Score ---------------------");
+    scoreTracker();
 }
+game();
