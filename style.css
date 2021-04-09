@@ -18,13 +18,13 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     width: 100%;
     height: 120px;
     background-color: rgba(255, 255, 255, 0.541);
     border-bottom: 0px solid rgb(52, 125, 121);
     box-shadow: 1px 1px 5px 3px rgba(52, 125, 121, .3);
-
+    z-index: 5;
 }
 
 .game {
@@ -41,7 +41,7 @@ h1 {
     align-items: center;
     width: 150px;
     height: 150px;
-    border-radius: 0px;
+    border-radius: 1px;
     background-color: #b6fdfa;
     border-radius: 1px;
     box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
@@ -136,18 +136,139 @@ h1 {
 .result-container {
     width: 100%;
     display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 100%;
-    grid-template-areas: "box";
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas: 
+                "header header header header"
+                "yours computer";
     justify-content: center;
+    height: 20%;
+    
 }
+
 .results {
+    grid-area: "header";
     text-align: center;
-    margin-top: 30px;
+    margin-top: 10px;
     justify-self: center;
     grid-area: "box";
     width: 80%;
     color:  rgba(36, 122, 118, 1);
     font-size: 30px;
+    grid-column: 1 / 5;
+    height: 40px;
+}
+
+.yourResults {
+    grid-area: "yours";
+    text-align: center;
+    margin-top: -20px;
+    justify-self: center;
+    grid-area: "box";
+    width: 80%;
+    color:  rgba(36, 122, 118, 1);
+    font-size: 30px;
+    grid-column: 2/3;
    
 }
+
+
+.compResults {
+    grid-area: "computer";
+    text-align: center;
+    margin-top: -20px;
+    justify-self: center;
+    grid-area: "box";
+    width: 80%;
+    color:  rgba(36, 122, 118, 1);
+    font-size: 30px;
+    grid-column: 3/4;
+   
+}
+/* computer buttons and display */
+
+.comcontainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    z-index: 1;
+    
+}
+
+.comGame {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.computer-choice {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid transparent;
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+    border-top: 0px;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    
+}
+
+.comrock {
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    border-radius: 0px;
+    background-color: rgba(36, 122, 118, .3);
+    border-radius: 1px;
+    box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
+    border:  solid transparent;
+}
+
+.compaper {
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    background-color: rgba(36, 122, 118, .3);
+    box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
+    border: 0 solid transparent;
+    border-radius: 1px;
+}
+
+.comscissors {
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    background-color: rgba(36, 122, 118, .3);
+    box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
+    border: 0 solid transparent;
+    border-radius: 1px;
+}
+
+#comrockimg {
+
+}
+
+#compaperimg {
+
+}
+
+#comscissorsimg {
+
+}
+
