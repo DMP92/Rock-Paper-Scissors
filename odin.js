@@ -8,6 +8,10 @@ let playerScore = 0;
 let computerScore = 0;
 let round = 0; 
 
+// Full-page prompt for 'play again' request
+
+const body = document.querySelector('body');
+
 // selectors for indiv. buttons
 let rButton = document.querySelector(".rock");
 let pButton = document.querySelector(".paper");
@@ -97,14 +101,14 @@ function gamePlay(playerSelection, computerSelection) {
         case playerSelection === scissors && computerSelection === paper:
             para.textContent =`You win! ${playerSelection} beats ${computerSelection}!`;
             playerScore += 1;
-            yourResults.innerHTML = `<h3> Your Score </h3> ${playerScore}`;
+            yourResults.innerHTML = `<h4> Your Score </h4> ${playerScore}`;
             
             break;
             
         default:
             para.textContent =`${computerSelection} beats ${playerSelection} You lose.`;
             computerScore += 1;
-            compResults.innerHTML = `<h3> Computer </h3> ${computerScore}`;
+            compResults.innerHTML = `<h4> Computer </h4> ${computerScore}`;
     }
    
     
@@ -123,6 +127,7 @@ function scoreTracker() {
 
 
 function rounds() {
+    const newPage = document.querySelector('.body');
     const ask = document.createElement('h2');
     const yes = document.createElement('button');
     const no = document.createElement('button');
@@ -139,18 +144,21 @@ function rounds() {
 
 function score() {
     if (round === 5 && playerScore > computerScore) {
-        const playerSco = document.createElement('h3');
+
+        /*
+        const playerSco = document.createElement('h4');
         playerSco.textContent = `${playerScore} to ${computerScore}, you won!`;
         console.log(playerSco);
         results.appendChild(playerSco);
-        results.style.cssText = "text-align: center; background-color: #b6fdfa; border-radius: 5px; box-shadow: 2px 2px 2px 2px  rgba(52, 125, 121, .6);";
-        
+        */
     } else {
-        const compSco = document.createElement('h3');
+
+
+        
+        const compSco = document.createElement('h4');
         compSco.textContent = `${computerScore} to ${playerScore}, you lost..`;
         console.log(compSco);
         results.appendChild(compSco);
-        results.style.cssText = "text-align: center; background-color: #b6fdfa; border-radius: 5px; box-shadow: 2px 2px 2px 2px  rgba(52, 125, 121, .6);";
         
         
     }
@@ -216,10 +224,11 @@ sButton.onclick = function() {
     gamePlay(scissors, computerSelection);
     console.log(playerScore, computerScore);
     results.appendChild(para);
-
+    
 
     if (round === 5) {
         console.log(`Round ${round} !End of game!`);
+        results.appendChild(para);
         score();
         rounds();
         
