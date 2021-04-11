@@ -9,7 +9,6 @@ let computerScore = 0;
 let round = 0; 
 
 // Full-page prompt for 'play again' request
-
 const body = document.querySelector('body');
 
 // selectors for indiv. buttons
@@ -28,15 +27,35 @@ compPButton.setAttribute('class', 'compPButtonDefault');
 compSButton.setAttribute('class', 'compSButtonDefault'); 
 
 // for printing results to screen
+const ask = document.createElement('h2');
+const yes = document.createElement('button');
+const no = document.createElement('button');
+yes.setAttribute('class', 'yes');
+no.setAttribute('class', 'no');
+ask.setAttribute('class', 'ask');
 
+const roundShow = document.querySelector('.round')
+const para = document.createElement('p');
 const results = document.querySelector('.results');
 const yourResults = document.querySelector('.yourResults');
 const compResults = document.querySelector('.compResults');
-yourResults.innerHTML += `<h3> Your Score </h3> ${playerScore}`;
-compResults.innerHTML = `<h3> Computer </h3> ${computerScore}`
-                    
+const resultContainer = document.querySelector('.resultContainer');
+const userScoreCont = document.querySelector('.userScore');
+const compScoreCont = document.querySelector('.compScore');
+const userScore = document.createElement('p');
+const compScore = document.createElement('p');
 
-const para = document.createElement('p');
+roundShow.innerHTML = `<p>Round ${round}</p>`;
+yourResults.innerHTML = `<h3> You </h3>`;
+compResults.innerHTML = `<h3> Comp </h3>`
+userScore.textContent =  `${playerScore}`;
+compScore.innerHTML =  `${computerScore}`;       
+userScoreCont.appendChild(userScore);
+compScoreCont.appendChild(compScore);
+
+
+
+
 
 // gameArray and compChoice needed for computer's random selection
 const gameArray = [
@@ -101,14 +120,15 @@ function gamePlay(playerSelection, computerSelection) {
         case playerSelection === scissors && computerSelection === paper:
             para.textContent =`You win! ${playerSelection} beats ${computerSelection}!`;
             playerScore += 1;
-            yourResults.innerHTML = `<h4> Your Score </h4> ${playerScore}`;
-            
+            yourResults.innerHTML = `<h3> You </h3>`;
+            userScore.innerHTML =  `${playerScore}`;
             break;
             
         default:
             para.textContent =`${computerSelection} beats ${playerSelection} You lose.`;
             computerScore += 1;
-            compResults.innerHTML = `<h4> Computer </h4> ${computerScore}`;
+            compResults.innerHTML = `<h3> Comp </h3>`;
+            compScore.innerHTML = `${computerScore}`;
     }
    
     
@@ -126,11 +146,13 @@ function scoreTracker() {
 };
 
 
+
 function rounds() {
     const newPage = document.querySelector('.body');
-    const ask = document.createElement('h2');
-    const yes = document.createElement('button');
-    const no = document.createElement('button');
+    
+
+    
+
 
     ask.textContent = 'Play again?';
     yes.textContent = 'Yes';
@@ -139,31 +161,28 @@ function rounds() {
     results.appendChild(ask);
     results.appendChild(yes);
     results.appendChild(no);
-    
+
+    yes.addEventListener('click', () => {
+        round = 0;
+        roundShow.innerHTML = `<p>Round ${round}</p>`;
+        results.textContent = '';
+        playerScore = 0;
+        computerScore = 0;
+        compRButton.setAttribute('class', 'compPButtonDefault'); 
+        compPButton.setAttribute('class', 'compPButtonDefault'); 
+        compSButton.setAttribute('class', 'compPButtonDefault'); 
+        
+        
+        yourResults.innerHTML = `<h3> You </h3>`;
+        compResults.innerHTML = `<h3> Comp </h3>`
+        userScore.textContent =  `${playerScore}`;
+        compScore.innerHTML =  `${computerScore}`;  
+        
+        
+    })
 }
 
-function score() {
-    if (round === 5 && playerScore > computerScore) {
 
-        /*
-        const playerSco = document.createElement('h4');
-        playerSco.textContent = `${playerScore} to ${computerScore}, you won!`;
-        console.log(playerSco);
-        results.appendChild(playerSco);
-        */
-    } else {
-
-
-        
-        const compSco = document.createElement('h4');
-        compSco.textContent = `${computerScore} to ${playerScore}, you lost..`;
-        console.log(compSco);
-        results.appendChild(compSco);
-        
-        
-    }
-
-}
 
 // -------------------------------------------- Event listeners for buttons 
 
@@ -171,23 +190,30 @@ rButton.addEventListener('click', () => {
     let playerSelection = rock;
     let computerSelection = computersChoice();
     round += 1;
-
-
     visibleCompChoice(computerSelection)
     gamePlay(playerSelection, computerSelection);
+    if (round === 4) {
+        roundShow.innerHTML = `<p>Final Round!</p>`;
+        
+        
+        
+
+    } else if (round === 5) {
+        roundShow.innerHTML = '<p>Game Over!</p>';
+        results.appendChild(para);
+        score();
+        rounds();
+    } else {
+        roundShow.innerHTML = `<p>Round ${round}</p>`;
+    }
+
+
+   
     console.log(playerScore, computerScore);
     results.appendChild(para);
 
 
-    if (round === 5) {
-        console.log(`Round ${round} !End of game!`);
-        score();
-        rounds();
-
-    } else {
-       console.log(round);
-    }
-
+    
 
 })
 
@@ -195,21 +221,28 @@ pButton.onclick = function() {
     playersSelection = paper;
     let computerSelection = computersChoice();
     round += 1;
-
-    
     visibleCompChoice(computerSelection)
     gamePlay(paper, computerSelection);
+
+    if (round === 4) {
+        roundShow.innerHTML = `<p>Final Round!</p>`;
+        
+        
+        
+
+    } else if (round === 5) {
+        roundShow.innerHTML = '<p>Game Over!</p>';
+        results.appendChild(para);
+        score();
+        rounds();
+    } else {
+        roundShow.innerHTML = `<p>Round ${round}</p>`;
+    }
 
     console.log(playerScore, computerScore);
     results.appendChild(para);
 
-    if (round === 5) {
-        console.log(`Round ${round} !End of game!`);
-        score();
-        rounds();
-    } else {
-       console.log(round);
-    }
+   
   
 
     
@@ -219,27 +252,58 @@ sButton.onclick = function() {
     playerSelection = scissors;
     let computerSelection = computersChoice();
     round += 1;
-
     visibleCompChoice(computerSelection)
     gamePlay(scissors, computerSelection);
+    if (round === 4) {
+        roundShow.innerHTML = `<p>Final Round!</p>`;
+        
+        
+        
+
+    } else if (round === 5) {
+        roundShow.innerHTML = '<p>Game Over!</p>';
+        results.appendChild(para);
+       
+        score();
+        rounds();
+    } else {
+        roundShow.innerHTML = `<p>Round ${round}</p>`;
+    }
+   
+
+
+    
     console.log(playerScore, computerScore);
     results.appendChild(para);
     
 
-    if (round === 5) {
-        console.log(`Round ${round} !End of game!`);
-        results.appendChild(para);
-        score();
-        rounds();
-        
-
-    } else {
-       console.log(round);
-    }
    
         
 }
 
+function score() {
+    
+    if (round === 5 && playerScore > computerScore) {
+        
+       
+        results.innerHTML = `<p>${playerScore} to ${computerScore}, you won!</p>`;
+        console.log(computerScore);
+        console.log(playerScore);
+        
+
+       
+    } else {
+
+        
+        
+        results.innerHTML = `<p>${computerScore} to ${playerScore}, you lost..</p>`;
+        console.log(computerScore);
+        console.log(playerScore);
+        
+        
+    }
+
+}
 
 
 
