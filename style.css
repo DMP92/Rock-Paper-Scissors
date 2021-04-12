@@ -57,9 +57,9 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: min(90%, 70rem);
     margin-left: 5%;
     margin-right: 5%;
+    width: 90%;
 }
 /* rock */
 .rock {
@@ -255,8 +255,7 @@ p {
     border-radius: 5px;
     box-shadow: 3px 3px 5px  rgba(0, 0, 0, .5);
     height: 350px;
-    width: min(90%, 70.5rem);}
-
+}
 @media screen and  (min-width: 601px) {
     
 
