@@ -9,14 +9,30 @@ html, body {
     
 }
 
+@media screen and (max-width: 600px) {
+
+
+
 h1 {
     font-family: Youknowthemoviesong;
-    font-size: 55px;
+    font-size: 38px;
     color:#347D79;
     text-shadow: 2px 2px 2px rgba(52, 125, 121, 0.3);
-    white-space: nowrap;
-    
+    white-space: wrap;
 
+}
+}
+
+@media screen and (min-width: 601px) {
+    h1 {
+        font-family: Youknowthemoviesong;
+        font-size: 55px;
+        color:#347D79;
+        text-shadow: 2px 2px 2px rgba(52, 125, 121, 0.3);
+        white-space: nowrap;
+        
+    
+    }
 }
 
 button {
@@ -27,9 +43,9 @@ button {
 .header {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 0px;
-    width: 100%;
+    width: min(100%);
     height: 120px;
     background-color: rgba(255, 255, 255, 0.541);
     border-bottom: 0px solid rgb(52, 125, 121);
@@ -41,7 +57,9 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    width: min(90%, 70rem);
+    margin-left: 5%;
+    margin-right: 5%;
 }
 /* rock */
 .rock {
@@ -49,18 +67,28 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
-    height: 150px;
+    width: 1fr;
+    height: 100%;
     border-radius: 1px;
     background-color: #b6fdfa;
     border-radius: 1px;
     box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
     border:  solid transparent;
 }
-#rock {
-    width: 100px;
-    height: 100px;
+@media screen and (max-width: 600px) {
+    #rock {
+        width: 75px;
+        height: 75px;
+    }
 }
+
+@media screen and (min-width: 601px) {
+    #rock {
+        width: 120px;
+        height: 120px;
+    }
+}
+
 
 /* Paper */
 
@@ -69,18 +97,29 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
-    height: 150px;
+    width: 1fr;
+    height: 100%;
     background-color: #b6fdfa;
     box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
-    border: 0 solid transparent;
+    border: solid transparent;
     border-radius: 1px;
     
 }
 
-#paper {
-    width: 100px;
-    height: 100px;
+
+
+@media screen and (max-width: 600px) {
+    #paper {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+@media screen and (min-width: 601px) {
+    #paper {
+        width: 120px;
+        height: 120px;
+    }
 }
 
 /* Scissors */
@@ -89,18 +128,28 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
-    height: 150px;
+    width: 1fr;
+    height: 100%;
     background-color: #b6fdfa;
     box-shadow: 2px 2px 2px 2px #357e7a99;
-    border: 0 solid transparent;
+    border: solid transparent;
     border-radius: 1px;
     
 }
 
-#scissors {
-    width: 100px;
-    height: 100px;
+
+@media screen and (max-width: 600px) {
+    #scissors {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+@media screen and (min-width: 601px) {
+    #scissors {
+        width: 120px;
+        height: 120px;
+    }
 }
 
 /* Pseudo classes for buttons */
@@ -201,13 +250,15 @@ p {
     background-color: #347d79;
     margin-bottom: 50px;
     margin-top: 10px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
     border-radius: 5px;
     box-shadow: 3px 3px 5px  rgba(0, 0, 0, .5);
     height: 350px;
-    width: 80%;
-}
+    width: min(90%, 70.5rem);}
+
+@media screen and  (min-width: 601px) {
+    
 
 .round {
     grid-column: 2/4;
@@ -217,7 +268,20 @@ p {
     width: 100%;
     height: 100%;
 }
+}
 
+@media screen and (max-width: 600px) {
+    
+    .round {
+        grid-column: 1/5;
+        grid-area: "round";
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+}
 .results {
     grid-area: "text";
     text-align: center;
@@ -232,6 +296,7 @@ p {
 
 }
 
+@media screen and (max-width: 600px) {
 .yourResults {
     grid-area: "yourResults";
     text-align: center;
@@ -239,9 +304,26 @@ p {
     justify-self: center;
     color:rgba(182, 253, 250, .6);
     font-size: 30px;
-    grid-column: 2/3;
+    grid-column: 1/3;
     width: 100%;
     height: 100%;
+
+}
+}
+
+@media screen and (min-width: 601px) {
+    .yourResults {
+        grid-area: "yourResults";
+        text-align: center;
+        align-self: center;
+        justify-self: center;
+        color:rgba(182, 253, 250, .6);
+        font-size: 30px;
+        grid-column: 2/3;
+        width: 100%;
+        height: 100%;
+    
+    }
 
 }
 
@@ -277,17 +359,38 @@ p {
     height: 100%;
 }
 
-.compResults {
-    grid-area: "compResults";
-    text-align: center;
-    justify-self: center;
-    align-self: center;
-    color:rgba(182, 253, 250, .6);
-    font-size: 30px;
-    grid-column: 3/4;
-    width: 100%;
-    height: 100%;
+@media screen and (min-width: 601px) {
+    .compResults {
+        grid-area: "compResults";
+        text-align: center;
+        justify-self: center;
+        align-self: center;
+        color:rgba(182, 253, 250, .6);
+        font-size: 30px;
+        grid-column: 3/4;
+        width: 100%;
+        height: 100%;
+    }
+
 }
+
+@media screen and (max-width: 600px) {
+    .compResults {
+        grid-area: "compResults";
+        text-align: center;
+        justify-self: center;
+        align-self: center;
+        color:rgba(182, 253, 250, .6);
+        font-size: 30px;
+        grid-column: 3/5;
+        width: 100%;
+        height: 100%;
+    }
+
+}
+
+
+
 
 /* computer buttons and display */
 
@@ -296,9 +399,10 @@ p {
     justify-content: center;
     overflow: hidden;
     border-radius: 8px;
-    width: 100%;
-    height: 120px;
+    width: min(90%);
     margin-top: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
 
 
 }
@@ -306,8 +410,8 @@ p {
 .comGame {
     display: flex;
     justify-content: center;
-    width: 80%;
-    height: 100%;
+    width: min(50%, 70rem);
+    height: min(50%);
     
 }
 
@@ -333,8 +437,8 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90px;
-    height: 90px;
+    width: 1fr;
+    height: 100%;
     border-radius: 0px;
     background-color: rgba(36, 122, 118, .3);
     border-radius: 1px;
@@ -347,8 +451,8 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90px;
-    height: 90px;
+    width: 1fr;
+    height: 100%;
     background-color: rgba(36, 122, 118, .3);
     box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
     border: 0 solid transparent;
@@ -360,25 +464,61 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90px;
-    height: 90px;
+    width: 1fr;
+    height: 100%;
     background-color: rgba(36, 122, 118, .3);
     box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
     border: 0 solid transparent;
     border-radius: 1px;
 }
 
-#comrockimg {
-
+@media screen and (max-width: 600px) {
+    #comrockimg {
+        width: 50px;
+        height: 50px;
+    }
 }
 
-#compaperimg {
-
+@media screen and (min-width: 601px) {
+    #comrockimg {
+        width: 80px;
+        height: 80px;
+    }
 }
 
-#comscissorsimg {
-
+@media screen and (max-width: 600px ) {
+    #compaperimg {
+        width: 50px;
+        height: 50px;
+    }
+    
 }
+
+@media screen and (min-width:601px ) {
+    #compaperimg {
+        width: 80px;
+        height: 80px;
+    }
+    
+}
+
+@media screen and (max-width: 600px ) {
+    #comscissorsimg {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media screen and (min-width:601px ) {
+    #comscissorsimg {
+        width: 80px;
+        height: 80px;
+    } 
+}
+
+
+
+
 
 /* All styles below are added from JavaScript file "odin.js" */
 .compRButtonDefault {
@@ -386,8 +526,8 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90px;
-    height: 90px;
+    width: 1fr;
+    height: 100%;
     background-color: rgba(36, 122, 118, .3);
     box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
     border: 0 solid transparent;
@@ -399,8 +539,8 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90px;
-    height: 90px;
+    width: 1fr;
+    height: 100%;
     background-color: rgba(36, 122, 118, .3);
     box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
     border: 0 solid transparent;
@@ -412,8 +552,8 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90px;
-    height: 90px;
+    width: 1fr;
+    height: 100%;
     background-color: rgba(36, 122, 118, .3);
     box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
     border: 0 solid transparent;
@@ -425,8 +565,8 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90px;
-    height: 90px;
+    width: 1fr;
+    height: 100%;
     background-color: rgba(36, 122, 118, 1);
     box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
     border: 0 solid transparent;
@@ -438,8 +578,8 @@ p {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 90px;
-        height: 90px;
+        width: 1fr;
+        height: 100%;
         background-color: rgba(36, 122, 118, 1);
         box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
         border: 0 solid transparent;
@@ -450,8 +590,8 @@ p {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 90px;
-        height: 90px;
+        width: 1fr;
+        height: 100%;
         background-color: rgba(36, 122, 118, 1);
         box-shadow: 2px 2px 2px 2px rgba(52, 125, 121, .6);
         border: 0 solid transparent;
@@ -465,8 +605,8 @@ p {
         border-radius: 1px;
         margin-right: 10px;
         margin-top: 10px;
-        height: 50px;
-        width: 200px;
+        height: 35%;
+        width: 30%;
         outline: 0;
         color:  rgba(36, 122, 118, 1);
         font-size: 20px;
@@ -482,8 +622,8 @@ p {
         border: 0 solid transparent;
         border-radius: 1px;
         margin-right: 10px;
-        height: 50px;
-        width: 200px;
+        height: 35%;
+        width: 30%;
         outline: 0;
         transition: ease-in .3s;
         transform: scale(1.1);
@@ -500,8 +640,8 @@ p {
         border: 0 solid transparent;
         border-radius: 1px;
         margin-left: 10px;
-        height: 50px;
-        width: 200px;
+        height: 35%;
+        width: 30%;
         outline: 0;
         color:  rgba(36, 122, 118, 1);
         font-size: 20px;
@@ -517,8 +657,8 @@ p {
         border: 0 solid transparent;
         border-radius: 1px;
         margin-left: 10px;
-        height: 50px;
-        width: 200px;
+        height: 35%;
+        width: 30%;
         outline: 0;
         transition: ease-out .3s;
         transform: scale(1.1);
@@ -536,6 +676,6 @@ p {
         font-family: "Verdana";
         font-size: 35px;
         margin-bottom: 20px;
-        margin-top: 150px;
+        margin-top: 95px;
         
     }

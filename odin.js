@@ -65,9 +65,6 @@ const gameArray = [
 ]
 
 
-
-
-
 function computersChoice() {
     var computer = gameArray[Math.floor(Math.random()
             * gameArray.length)];
@@ -78,12 +75,7 @@ function computersChoice() {
 
 let computerSelection = computersChoice();
 
-
-
 function visibleCompChoice(computer) {
-    
-        
-
         switch (true) {
             case computer === rock:
                 compRButton.setAttribute('class', 'compRButton'); 
@@ -101,7 +93,6 @@ function visibleCompChoice(computer) {
                 compRButton.setAttribute('class', 'compSButtonDefault');
             break;
         }
-
 }
 
 
@@ -129,9 +120,7 @@ function gamePlay(playerSelection, computerSelection) {
             computerScore += 1;
             compResults.innerHTML = `<h3> Comp </h3>`;
             compScore.innerHTML = `${computerScore}`;
-    }
-   
-    
+    } 
 }
 
 function scoreTracker() {
@@ -142,17 +131,18 @@ function scoreTracker() {
         default: 
             para.textContent = `The computer scored ${computerScore}, you scored ${playerScore}! You lost..`;
     }
-
 };
 
-
+function btnStop() {
+    if (round => 5) {
+        btn.disabled = true;
+    } else {
+        btn.disabled = false;
+    }
+}
 
 function rounds() {
     const newPage = document.querySelector('.body');
-    
-
-    
-
 
     ask.textContent = 'Play again?';
     yes.textContent = 'Yes';
@@ -163,11 +153,17 @@ function rounds() {
     results.appendChild(no);
 
     yes.addEventListener('click', () => {
+        rButton.disabled = false;
+        pButton.disabled = false;
+        sButton.disabled = false;
         round = 0;
+
         roundShow.innerHTML = `<p>Round ${round}</p>`;
         results.textContent = '';
+
         playerScore = 0;
         computerScore = 0;
+
         compRButton.setAttribute('class', 'compPButtonDefault'); 
         compPButton.setAttribute('class', 'compPButtonDefault'); 
         compSButton.setAttribute('class', 'compPButtonDefault'); 
@@ -176,9 +172,7 @@ function rounds() {
         yourResults.innerHTML = `<h3> You </h3>`;
         compResults.innerHTML = `<h3> Comp </h3>`
         userScore.textContent =  `${playerScore}`;
-        compScore.innerHTML =  `${computerScore}`;  
-        
-        
+        compScore.innerHTML =  `${computerScore}`;    
     })
 }
 
@@ -192,29 +186,25 @@ rButton.addEventListener('click', () => {
     round += 1;
     visibleCompChoice(computerSelection)
     gamePlay(playerSelection, computerSelection);
+
     if (round === 4) {
         roundShow.innerHTML = `<p>Final Round!</p>`;
         
-        
-        
-
-    } else if (round === 5) {
+    } else if (round > 4) {
         roundShow.innerHTML = '<p>Game Over!</p>';
         results.appendChild(para);
+        rButton.disabled = true;
+        pButton.disabled = true;
+        sButton.disabled = true;
         score();
         rounds();
+
     } else {
         roundShow.innerHTML = `<p>Round ${round}</p>`;
     }
 
-
-   
     console.log(playerScore, computerScore);
     results.appendChild(para);
-
-
-    
-
 })
 
 pButton.onclick = function() {
@@ -226,26 +216,22 @@ pButton.onclick = function() {
 
     if (round === 4) {
         roundShow.innerHTML = `<p>Final Round!</p>`;
-        
-        
-        
-
-    } else if (round === 5) {
+    
+    } else if (round > 4) {
         roundShow.innerHTML = '<p>Game Over!</p>';
         results.appendChild(para);
+        rButton.disabled = true;
+        pButton.disabled = true;
+        sButton.disabled = true;        
         score();
         rounds();
+
     } else {
         roundShow.innerHTML = `<p>Round ${round}</p>`;
     }
 
     console.log(playerScore, computerScore);
-    results.appendChild(para);
-
-   
-  
-
-    
+    results.appendChild(para);  
 }
 
 sButton.onclick = function() {
@@ -254,31 +240,25 @@ sButton.onclick = function() {
     round += 1;
     visibleCompChoice(computerSelection)
     gamePlay(scissors, computerSelection);
+
     if (round === 4) {
         roundShow.innerHTML = `<p>Final Round!</p>`;
         
-        
-        
-
-    } else if (round === 5) {
+    } else if (round > 4) {
         roundShow.innerHTML = '<p>Game Over!</p>';
         results.appendChild(para);
-       
+        rButton.disabled = true;
+        pButton.disabled = true;
+        sButton.disabled = true;        
         score();
         rounds();
+
     } else {
         roundShow.innerHTML = `<p>Round ${round}</p>`;
     }
-   
-
-
     
     console.log(playerScore, computerScore);
-    results.appendChild(para);
-    
-
-   
-        
+    results.appendChild(para);       
 }
 
 function score() {
