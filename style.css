@@ -15,11 +15,10 @@ html, body {
 
 h1 {
     font-family: Youknowthemoviesong;
-    font-size: 35px;
+    font-size: 30px;
     color:#347D79;
     text-shadow: 2px 2px 2px rgba(52, 125, 121, 0.3);
     white-space: wrap;
-
 }
 }
 
@@ -30,7 +29,6 @@ h1 {
         color:#347D79;
         text-shadow: 2px 2px 2px rgba(52, 125, 121, 0.3);
         white-space: nowrap;
-        
     
     }
 }
